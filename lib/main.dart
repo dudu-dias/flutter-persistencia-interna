@@ -4,7 +4,15 @@ import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(ByteBankApp());
+import 'database/app_database.dart';
+import 'models/contact.dart';
+
+void main() {
+  runApp(ByteBankApp());
+  save(Contact(0, 'Gato', 3000)).then((id) {
+    findAll().then((contacts) => debugPrint(contacts.toString()));
+  });
+}
 
 class ByteBankApp extends StatelessWidget {
   // This widget is the root of your application.
